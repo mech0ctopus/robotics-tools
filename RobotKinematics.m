@@ -25,7 +25,7 @@ classdef RobotKinematics
             T_local=subs(T_local,pi,3.14159265359);
             P=vpa(T_local(1:3,4),3);
         end
-        %% Denavit-Hartenerg (DH) Matrices
+        %% Denavit-Hartenberg (DH) Matrices
         function [T] = computeT(A,n)
             % Calculate Composite Frame Transformation Matrix (DH)
             %
