@@ -17,7 +17,7 @@ def rotate(axis, theta, angular_units='radians'):
     elif angular_units=='radians':
         pass
     else:
-        raise Exception('Unknown angular units.  Please use radians or degrees')
+        raise Exception('Unknown angular units.  Please use radians or degrees.')
     #Select appropriate basic homogenous matrix
     if axis=='x':
         rotation_matrix=matrix([[1, 0, 0, 0],
