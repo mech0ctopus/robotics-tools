@@ -5,4 +5,4 @@ Robotics design and analysis tools.
 Functions for calculating Basic Transformation Matrices in 3D space.  Can be used to calculate homogeneous transformations (rotation and translation) for serial kinematic chain manipulators.
 
 ## RobotKinematics.m ##
-MATLAB functions for analyzing manipulator arms for serial kinematic chain manipulators.  Includes functions for 6-DOF forward kinematics, Denavit-Hartenberg (DH) Matrix generation, cubic polynomial trajectory generation, homogeneous transformation matrix generation, and planar arm kinematics.
+MATLAB class of functions for analyzing serial kinematic chain manipulators.  Includes functions for 6-DOF forward kinematics, Denavit-Hartenberg (DH) Matrix generation, cubic polynomial trajectory generation, homogeneous transformation matrix generation, and planar arm kinematics.
