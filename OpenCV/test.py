@@ -78,7 +78,7 @@ def watershed(image):
 
 def detect_edges(img):
     '''Detects edges in image.'''
-    edges = cv2.Canny(img,100,200)
+    edges = cv2.Canny(img,10,20) #100, 200
     return edges
 
 def show_webcam(mirror=True,detect_circles=False,segment=False,edges=False):
@@ -100,19 +100,25 @@ def show_webcam(mirror=True,detect_circles=False,segment=False,edges=False):
     cv2.destroyAllWindows()
 
 def depth(left_img,right_img):
-    stereo = cv2.StereoBM_create(numDisparities=32, blockSize=9) #16, 15
+    stereo = cv2.StereoBM_create(numDisparities=16*5, blockSize=11) #16, 15
     disparity = stereo.compute(left,right)
-    plt.imshow(disparity,'gray')
+    plt.imshow(disparity,'plasma')#'gray')
     plt.show()
     
 if __name__ == '__main__':
-    #filepath=r"G:\Pictures\Pictures\CDM_05082017.jpg"
-    # Read image. 
-    #img = cv2.imread(filepath, cv2.IMREAD_COLOR) 
+    # filepath=r"C:\Users\Craig\Pictures\tv.jpg"
+    # # Read image. 
+    # img = cv2.imread(filepath, cv2.IMREAD_COLOR) 
+    # cv2.imshow('rgb',img)
+    # img=detect_edges(img)
+    # cv2.imshow('edges',img)
     #show_webcam(mirror=True,detect_circles=True,edges=True)
     
-    left=r"C:\Users\Craig\Pictures\Left1.JPG"
-    right=r"C:\Users\Craig\Pictures\Right1.JPG"
+    # left=r"C:\Users\Craig\Pictures\Left1.JPG"
+    # right=r"C:\Users\Craig\Pictures\Right1.JPG"
+
+    left=r"G:\Documents\KITTI\data\val\X\2011_09_30_drive_0018_sync_0000000134.png"
+    right=r"G:\Documents\KITTI\data\val\X\2011_09_30_drive_0018_sync_0000000135.png"
     
     left=cv2.imread(left,0)
     right=cv2.imread(right,0)

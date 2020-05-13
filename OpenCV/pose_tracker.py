@@ -5,8 +5,8 @@ Pose tracking of chessboard on live video stream.
 import cv2 as cv
 import numpy as np
 import time
-  
-def draw(img, corners, imgpts):
+
+def draw_axes(img, corners, imgpts):
     corner = tuple(corners[0].ravel())
     img = cv.line(img, corner, tuple(imgpts[0].ravel()), (255,0,0), 5)
     img = cv.line(img, corner, tuple(imgpts[1].ravel()), (0,255,0), 5)
@@ -54,8 +54,9 @@ def pose_tracker(ret=True, plot_cube=False, mirror=True):
         ret, corners = cv.findChessboardCorners(gray, (9,6), None)
         # If found, add object points, image points (after refining them)
         if ret == True:
-            objpoints.append(objp)
             corners2 = cv.cornerSubPix(gray,corners, (11,11), (-1,-1), criteria)
+            
+            objpoints.append(objp)
             imgpoints.append(corners)
             
             # Draw and display the corners
@@ -72,7 +73,7 @@ def pose_tracker(ret=True, plot_cube=False, mirror=True):
                 img = draw_cube(img,corners2,imgpts)
             else:
                 #Draw coordinate frame axes
-                img = draw(img,corners2,imgpts)
+                img = draw_axes(img,corners2,imgpts)
             cv.imshow('Pose Tracking', img)
         
         #Estimate instantaneous frames per second
@@ -86,4 +87,4 @@ def pose_tracker(ret=True, plot_cube=False, mirror=True):
     cv.destroyAllWindows()
     
 if __name__=='__main__':
-    pose_tracker(ret=True, plot_cube=True, mirror=True)
+    pose_tracker(ret=True, plot_cube=False, mirror=True)
